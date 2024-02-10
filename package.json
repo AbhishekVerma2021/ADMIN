@@ -64,6 +64,9 @@
       "last 1 safari version"
     ]
   },
+  "devDependencies": {
+    "prettier": "2.8.8"
+  },
   "overrides": {
     "svgo": "3.0.2"
   }
