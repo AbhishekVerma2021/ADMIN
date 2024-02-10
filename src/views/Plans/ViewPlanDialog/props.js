@@ -5,7 +5,7 @@ import {
 
 export const mapDispatchToProps = (dispatch) => ({
   // modifyPlan: (planId, updates) => dispatch(modifyPlan(planId, updates)),
-  editPlanDetails: (details) => dispatch(editPlanDetails(details)),
+  editPlanDetails: (details, planId) => dispatch(editPlanDetails(details, planId)),
 });
 
 export const mapStateToProps = (state) => ({});

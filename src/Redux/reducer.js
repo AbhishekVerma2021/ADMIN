@@ -69,14 +69,14 @@ const userReducer = (state = initialState, action) => {
       // console.log(data)
       return {
         ...state,
-        isFullPageLoading : false,
+        isFullPageLoading: false,
         allPlansData: data,
       }
     };
     case GET_ALL_PLANS_REJECTED: {
       return {
         ...state,
-        isFullPageLoading : false,
+        isFullPageLoading: false,
         // emailVerifyFlag: false,
       };
     };
@@ -232,7 +232,7 @@ const userReducer = (state = initialState, action) => {
       const { data, _id } = action.payload;
       const { message } = data;
       const updatedUsers = state.allUsersData.map((user) => {
-        if(user._id === _id) {
+        if (user._id === _id) {
           user.isActivated = false;
         };
         return user;
@@ -240,7 +240,7 @@ const userReducer = (state = initialState, action) => {
       toast.success(message);
       return {
         ...state,
-        allUsersData:updatedUsers,
+        allUsersData: updatedUsers,
         isFullPageLoading: false,
       };
     };
@@ -257,7 +257,7 @@ const userReducer = (state = initialState, action) => {
       };
     };
     case ENABLE_USER_FULFILLED: {
-      return { 
+      return {
         ...state,
         isFullPageLoading: false,
       };
@@ -373,14 +373,23 @@ const userReducer = (state = initialState, action) => {
 
     case EDIT_PLAN_DETAILS_PENDING: {
       return {
-        ...state, 
+        ...state,
         isFullPageLoading: true,
       };
     };
     case EDIT_PLAN_DETAILS_FULFILLED: {
+      const { data, planId } = action.payload;
+      const { updatedSubscription } = data;
+      const updatedPlans = state.allPlansData.map(plan => {
+        if(plan.priceId === planId) {
+          return updatedSubscription;
+        }
+        return plan;
+      });
       return {
         ...state,
         isFullPageLoading: false,
+        allPlansData: updatedPlans,
       };
     };
     case EDIT_PLAN_DETAILS_REJECTED: {

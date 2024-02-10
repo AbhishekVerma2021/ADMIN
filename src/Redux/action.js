@@ -126,12 +126,17 @@ export const enableUser = (uid) => {
 };
 
 
-export const editPlanDetails = (details) => {
+export const editPlanDetails = (details, planId) => {
   return (dispatch) => {
     dispatch({ type: EDIT_PLAN_DETAILS_PENDING });
     Axios.post('/admin/update-plan', details)
-    .then((res) => dispatch({ type: EDIT_PLAN_DETAILS_FULFILLED, payload: res.data }))
-    .catch((err) => dispatch({ type: EDIT_PLAN_DETAILS_REJECTED, payload: err}));
+      .then((res) => dispatch({
+        type: EDIT_PLAN_DETAILS_FULFILLED, payload: {
+          data: res.data,
+          planId: planId
+        }
+      }))
+      .catch((err) => dispatch({ type: EDIT_PLAN_DETAILS_REJECTED, payload: err }));
   };
 };
 

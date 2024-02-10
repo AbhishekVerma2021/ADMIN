@@ -33,7 +33,7 @@ const ViewPlanDialog = (props) => {
         planId: planId,
       }
       console.log(planId)
-      await editPlanDetails(updates);
+      await editPlanDetails(updates, planId);
       setOpenEditDialog(false);
     }
     catch (error) {

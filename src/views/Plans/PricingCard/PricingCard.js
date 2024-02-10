@@ -43,7 +43,7 @@ const PricingCard = (props) => {
         ))}
       </ul> */}
       <Button variant='outlined' sx={{ color: `${priceColor} !important`, border: `2px solid ${priceColor}`, width: '150px' }} className="start-trial-btn" onClick={() => setOpenEditDialog(true)}>Edit Plan</Button>
-      <ViewPlanDialog planName={planName} trialPeriod={trialDays} amount={price} open={openEditDialog} planId={_id} productId={productId} priceId={priceId} metaId={metaId} setOpenEditDialog={setOpenEditDialog} />
+      <ViewPlanDialog planName={planName} trialPeriod={trialDays} amount={price} open={openEditDialog} planId={priceId} setOpenEditDialog={setOpenEditDialog} />
     </div>
   );
 };
