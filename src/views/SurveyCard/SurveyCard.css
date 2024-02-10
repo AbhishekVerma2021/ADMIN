@@ -1,0 +1,18 @@
+/* surveyCardStyles.css */
+@media (max-width: 400px) {
+  .survey-card {
+    padding: 10px;
+  }
+
+  .next-button {
+    width: 100%;
+  }
+}
+
+.survey-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.next-button:hover {
+  transform: translateY(-2px);
+}

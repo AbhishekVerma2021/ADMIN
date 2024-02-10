@@ -1,0 +1,14 @@
+.planCardsContainer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  place-items: center;
+  grid-gap: 4rem;
+}
+
+@media only screen and (max-width: 700px) {
+.planCardsContainer {
+  grid-template-columns: 1fr;
+}
+}

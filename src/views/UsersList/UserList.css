@@ -1,0 +1,12 @@
+.reviewTextForReview {
+  /* border: 2px solid red; */
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.platformNameInList {
+  text-transform: capitalize !important;
+  /* border: 2px solid blue; */
+}

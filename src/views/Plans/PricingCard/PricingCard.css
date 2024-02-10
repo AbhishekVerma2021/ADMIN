@@ -1,0 +1,110 @@
+/* PricingCard.css */
+.pricing-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  position: relative;
+  text-align: right;
+  padding: 10px 20px 20px 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  width: 80%;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+}
+
+.hotelCountForplan {
+  text-align: right;
+  font-size: 15px;
+}
+
+.card-header h2 {
+  color: #333;
+  margin: 0;
+  padding: 10px 0;
+}
+.price > span {
+  text-align: center;
+  width: 100%;
+}
+
+.price {
+  font-size: 2em;
+  top: -1.5rem;
+  left: -1rem;
+  position: absolute;
+  height: 8rem;
+  width: 40%;
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 5px;
+  justify-content: center;
+  color: white;
+}
+
+.carPlanName {
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  /* border: 2px solid; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.featuresHeader {
+  width: 100%;
+  text-align: left;
+  /* display: flex;
+  justify-content: fle; */
+  font-size: 15px;
+}
+
+.frequency {
+  font-size: 0.5em;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.features-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.features-list li.available {
+  color: #27ae60;
+}
+
+.features-list li.unavailable {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+.start-trial-btn {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px !important;
+  font-size: 12px !important;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.start-trial-btn:hover {
+  background: #2ecc71;
+}
+
+
+.plansFeature {
+  font-size: 15px;
+}

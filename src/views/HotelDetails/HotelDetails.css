@@ -1,0 +1,145 @@
+
+.hotelDetailsBackground {
+  background-image: url('../../Images/formBack.svg') !important;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: right;
+  
+  /* position: relative; */
+}
+.addHotelDetailsClass {
+
+}
+
+
+
+
+.hotelNameContainer {
+  width: 100%;
+  font-weight: 600;
+  font-size: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+
+.hoteldetailsMasterContainer {
+  padding: 20px;
+}
+
+.locationLabel {
+  font-size: 20px;
+  font-weight: 600;
+  color: #959595;
+  
+}
+
+.locationText {
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.dividerContainer {
+  width: 40%;
+  /* margin: 20px 0; */
+}
+
+.dividerHr {
+  height: 1px;
+  border: none;
+  background-color: #80808058;
+}
+
+.descriptionContainer {
+  width: 40%;
+}
+
+.descriptionLabel {
+  font-size: 20px;
+  color: #959595;
+  font-weight: 600;
+}
+
+.descriptionText {
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.furtherDetails {
+  height: 50vh;
+  overflow-y: auto;
+}
+
+.furtherDetails >div {
+  margin: 10px 0;
+}
+
+.enterHotelDetailsMainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.enterDetails {
+  color: rgba(128, 128, 128, 0.741);
+}
+
+.plusIconContainer > img {
+  height: 50vh;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.plusIconContainer > img:hover {
+  height: 51vh;
+  /* box-shadow: 5px 5px 10px black; */
+}
+
+@media only screen and (max-width: 800px) {
+  .descriptionContainer {
+    width: 60%;
+  }
+  .dividerContainer {
+    width: 60%;
+    /* margin: 20px 0; */
+  }
+  
+}
+
+@media only screen and (max-width: 600px) {
+  .plusIconContainer > img {
+    height: 30vh;
+  }
+  .plusIconContainer > img:hover {
+    height: 31vh;
+    /* box-shadow: 5px 5px 10px black; */
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .hotelDetailsBackground{
+    background-size: 70%;
+  }
+  .descriptionContainer {
+    width: 80%;
+  }
+  .dividerContainer {
+    width: 80%;
+    /* margin: 20px 0; */
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .plusIconContainer > img {
+    height: 20vh;
+  }
+  .plusIconContainer > img:hover {
+    height: 21vh;
+    /* box-shadow: 5px 5px 10px black; */
+  }
+
+}

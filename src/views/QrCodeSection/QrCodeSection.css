@@ -1,0 +1,25 @@
+.getYourQrSectionContainer {
+  /* background: url(../../assets/images/carousel-3.jpg) !important; */
+  height: 70vh !important;
+  /* mix-blend-mode: color-burn; */
+  /* background-repeat: no-repeat !important; */
+  /* background: fixed !important; */
+  /* background-size: contain !important; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.qrCodeSVG {
+  height: 20vh;
+}
+
+.headerForGetQr {
+  font-size: 40px;
+}
+
+.decriptionGetQr {
+  margin:  0;
+  color: #80808095;
+}
