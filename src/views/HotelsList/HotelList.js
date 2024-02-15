@@ -315,7 +315,7 @@ allHotelsData,
                 coloredShadow="info"
               >
                 <MDTypography variant="h6" color="white">
-                  All Hotels
+                  All Businesses
                 </MDTypography>
               </MDBox>
               <MDBox pt={3}>

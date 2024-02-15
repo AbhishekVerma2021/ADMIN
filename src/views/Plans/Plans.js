@@ -110,7 +110,7 @@ const Plans = (props) => {
               priceId={data.priceId}
               productId={data.productId}
               planName={data.name}
-              interval={data.interval}
+              interval={index === 0 ? "monthly" : index === 1 ? "quaterly" : index === 2 ? "half yearly" : "yearly"}
               price={data.price}
               _id={data._id}
               metaId={data.metaId}

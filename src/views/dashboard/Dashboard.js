@@ -34,9 +34,47 @@ import reportsLineChartData from "views/dashboard/data/reportsLineChartData";
 // Dashboard components
 import Projects from "views/dashboard/components/Projects";
 import OrdersOverview from "views/dashboard/components/OrdersOverview";
+import { useEffect, useState } from "react";
 
-function Dashboard() {
+const Dashboard = (props) => {
   const { sales, tasks } = reportsLineChartData;
+  const {
+    getAllUsers,
+    allUsersData,
+    allHotelsData,
+    getAllHotels,
+  } = props;
+  useEffect(() => {
+    const getUsersFromRedux = async () => {
+      try {
+        await getAllUsers();
+        await getAllHotels();
+      }
+      catch (err) {
+        alert('Something went wrong!!!')
+      }
+    };
+
+    getUsersFromRedux();
+  }, []);
+
+  const [activeUserCount, setActiveUserCount] = useState(0);
+  const [activeBusinessCount, setActiveBusinessCount] = useState(0);
+
+  useEffect(() => {
+    let count = 0;
+    allUsersData && allUsersData.length > 0 && allUsersData.map(user => {
+      if(user.isActivated)
+        count++;
+    });
+    setActiveUserCount(count);
+    count = 0;
+    allHotelsData && allHotelsData.length > 0 && allHotelsData.map(hotel => {
+      if(hotel.isActive) count++;
+    });
+    setActiveBusinessCount(count);
+  }, [allUsersData, allHotelsData])
+
 
   return (
     <DashboardLayout>
@@ -49,7 +87,7 @@ function Dashboard() {
                 color="dark"
                 icon="weekend"
                 title="Total Users"
-                count={281}
+                count={allUsersData ? allUsersData.length : 'NA'}
                 percentage={{
                   color: "success",
                   amount: "+55%",
@@ -63,7 +101,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 icon="leaderboard"
                 title="Total active Users"
-                count="2,300"
+                count={activeUserCount}
                 percentage={{
                   color: "success",
                   amount: "+3%",
@@ -77,8 +115,8 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="success"
                 icon="store"
-                title="Total hotels"
-                count="34k"
+                title="Total businesses"
+                count={allHotelsData ? allHotelsData.length : 0}
                 percentage={{
                   color: "success",
                   amount: "+1%",
@@ -92,8 +130,8 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="primary"
                 icon="person_add"
-                title="Total Active hotels"
-                count="+91"
+                title="Total Active businesses"
+                count={activeBusinessCount}
                 percentage={{
                   color: "success",
                   amount: "",

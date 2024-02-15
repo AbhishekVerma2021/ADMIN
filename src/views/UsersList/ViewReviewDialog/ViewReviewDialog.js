@@ -11,11 +11,11 @@ const ViewReviewDialog = (props) => {
   return (<>
     <Dialog open={open} onClose={() => handleOpen(false)}>
       <DialogTitle>
-        Registerd Hotel Info
+        Registerd business Info
       </DialogTitle>
       <DialogContent>
         <div>
-          <strong>Registerd Hotel Name:</strong> {data?.name ? data.name : "Not registerd Yet"}
+          <strong>Registerd business Name:</strong> {data?.name ? data.name : "Not registerd Yet"}
         </div>
         <div>
           <strong>Location:</strong> {data?.location ? data.location : "Not registerd Yet"}

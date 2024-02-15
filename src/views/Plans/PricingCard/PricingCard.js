@@ -29,7 +29,7 @@ const PricingCard = (props) => {
         <div className='hotelCountForplan'>Trial days for this plan: {trialDays}</div>
         <p className="price" style={{ backgroundColor: priceColor }}>
           <span>
-            {price}
+          ₹{price}
           </span>
           <span className="frequency">/{interval}</span>
         </p>

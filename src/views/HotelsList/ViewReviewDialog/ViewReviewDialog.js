@@ -36,7 +36,7 @@ const ViewReviewDialog = (props) => {
     };
   return (
     <Dialog open={open} onClose={() => handleOpen(false)} maxWidth="md" fullWidth>
-      <DialogTitle>Hotel Details</DialogTitle>
+      <DialogTitle>Business Details</DialogTitle>
       <DialogContent dividers>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -49,10 +49,10 @@ const ViewReviewDialog = (props) => {
                 <ListItemIcon sx={{ fontSize: "30px" }}><LocationOnIcon sx={{ fontSize: "20px" }} /></ListItemIcon>
                 <ListItemText primary={<span style={{ fontWeight: 600 }}>Location</span>} secondary={location} />
               </ListItem>
-              <ListItem>
+              {/* <ListItem>
                 <ListItemIcon sx={{ fontSize: "30px" }}><MeetingRoomIcon /></ListItemIcon>
                 <ListItemText primary={<span style={{ fontWeight: 600 }}>Room</span>} secondary={room} />
-              </ListItem>
+              </ListItem> */}
               <ListItem>
                 <ListItemIcon sx={{ fontSize: "30px" }}><CommentIcon /></ListItemIcon>
                 <ListItemText primary={<span style={{ fontWeight: 600 }}>Reviews</span>} secondary={`${reviews?.length} reviews`} />

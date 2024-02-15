@@ -50,11 +50,11 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "Hotel Name and location", accessor: "author", width: "20%", align: "left" },
+      { Header: "Business Name and location", accessor: "author", width: "20%", align: "left" },
       { Header: "Review Count", accessor: "reviewCount", width: "20%", align: "left" },
       { Header: "Active Ai", accessor: "function", align: "left" },
       { Header: "Plan Status", accessor: "status", align: "center" },
-      { Header: "No. Of rooms", accessor: "employed", align: "center" },
+      // { Header: "No. Of rooms", accessor: "employed", align: "center" },
       { Header: "ACTION", accessor: "action", align: "center" },
     ],
 
