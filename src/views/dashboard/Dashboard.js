@@ -35,6 +35,9 @@ import reportsLineChartData from "views/dashboard/data/reportsLineChartData";
 import Projects from "views/dashboard/components/Projects";
 import OrdersOverview from "views/dashboard/components/OrdersOverview";
 import { useEffect, useState } from "react";
+import PersonPinIcon from '@mui/icons-material/PersonPin';
+import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 
 const Dashboard = (props) => {
   const { sales, tasks } = reportsLineChartData;
@@ -42,13 +45,19 @@ const Dashboard = (props) => {
     getAllUsers,
     allUsersData,
     allHotelsData,
+    getLine1Data,
     getAllHotels,
+    lineChartOneData,
+    getBarGraphData,
+    barGraphData,
   } = props;
   useEffect(() => {
     const getUsersFromRedux = async () => {
       try {
         await getAllUsers();
         await getAllHotels();
+        await getLine1Data();
+        await getBarGraphData();
       }
       catch (err) {
         alert('Something went wrong!!!')
@@ -60,20 +69,52 @@ const Dashboard = (props) => {
 
   const [activeUserCount, setActiveUserCount] = useState(0);
   const [activeBusinessCount, setActiveBusinessCount] = useState(0);
+  const [barData, setBarData] = useState({});
+  const [lineOneData, setLineOneData] = useState({});
+
+
+  const firstCharData = () => {
+    let data = {
+      labels: ["S", "M", "T", "W", "T", "F", "S"],
+      datasets: { label: "Count", data: Object.values(barGraphData) },
+    };
+    // console.log(allHotelsData)
+    setBarData(data);
+
+  };
+
+  const handleLineOneData = () => {
+    let data = {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      datasets: { label: "Users", data: Object.values(lineChartOneData) },
+    };
+    setLineOneData(data);
+  };
+
 
   useEffect(() => {
     let count = 0;
     allUsersData && allUsersData.length > 0 && allUsersData.map(user => {
-      if(user.isActivated)
+      if (user.isActivated)
         count++;
     });
     setActiveUserCount(count);
     count = 0;
     allHotelsData && allHotelsData.length > 0 && allHotelsData.map(hotel => {
-      if(hotel.isActive) count++;
+      if (hotel.isActive) count++;
     });
     setActiveBusinessCount(count);
-  }, [allUsersData, allHotelsData])
+    // firstCharData();
+    lineChartOneData && Object.values(lineChartOneData).length > 0 && handleLineOneData();
+    barGraphData && Object.values(barGraphData).length > 0 && firstCharData();
+  }, [allUsersData, allHotelsData, lineChartOneData, barGraphData])
+
+
+
+  useEffect(() => {
+    console.log(lineChartOneData);
+  }, [lineChartOneData])
+
 
 
   return (
@@ -85,7 +126,7 @@ const Dashboard = (props) => {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="dark"
-                icon="weekend"
+                icon={<PersonPinIcon />}
                 title="Total Users"
                 count={allUsersData ? allUsersData.length : 'NA'}
                 percentage={{
@@ -99,7 +140,7 @@ const Dashboard = (props) => {
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
-                icon="leaderboard"
+                icon={<RecordVoiceOverIcon />}
                 title="Total active Users"
                 count={activeUserCount}
                 percentage={{
@@ -129,7 +170,7 @@ const Dashboard = (props) => {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="primary"
-                icon="person_add"
+                icon={<BusinessCenterIcon />}
                 title="Total Active businesses"
                 count={activeBusinessCount}
                 percentage={{
@@ -147,10 +188,10 @@ const Dashboard = (props) => {
               <MDBox mb={3}>
                 <ReportsBarChart
                   color="info"
-                  title="Registrations per week"
-                  description="Profits earned by each of your Buisnesses"
-                  date="last calculated 1 days ago"
-                  chart={reportsBarChartData}
+                  title="Registrations in week"
+                  description="Busisness registrations in this week"
+                  // date="last calculated 1 days ago"
+                  chart={barData}
                 />
               </MDBox>
             </Grid>
@@ -158,18 +199,14 @@ const Dashboard = (props) => {
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="success"
-                  title="daily sales"
-                  description={
-                    <>
-                      (<strong>+15%</strong>) increase in today sales.
-                    </>
-                  }
-                  date="updated 4 min ago"
-                  chart={sales}
+                  title="Registrations per month"
+                  description="Business registraions in every month"
+                  // date="updated 4 min ago"
+                  chart={lineOneData}
                 />
               </MDBox>
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            {/* <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="dark"
@@ -179,7 +216,7 @@ const Dashboard = (props) => {
                   chart={tasks}
                 />
               </MDBox>
-            </Grid>
+            </Grid> */}
           </Grid>
         </MDBox>
         {/* <MDBox>

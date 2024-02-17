@@ -92,7 +92,7 @@ function Configurator() {
     setTransparentSidenav(dispatch, false);
   };
   const handleFixedNavbar = () => setFixedNavbar(dispatch, !fixedNavbar);
-  const handleDarkMode = () => setDarkMode(dispatch, !darkMode);
+  const handleDarkMode = () => setDarkMode(dispatch, true);
 
   // sidenav type buttons styles
   const sidenavTypeButtonsStyles = ({
@@ -126,6 +126,10 @@ function Configurator() {
       color: darkMode ? background.sidenav : white.main,
     },
   });
+
+  useEffect(() => {
+    handleDarkMode();
+  }, []);
 
   return (
     <ConfiguratorRoot variant="permanent" ownerState={{ openConfigurator }}>
@@ -279,12 +283,12 @@ function Configurator() {
           <Switch checked={fixedNavbar} onChange={handleFixedNavbar} />
         </MDBox>
         <Divider />
-        <MDBox display="flex" justifyContent="space-between" alignItems="center" lineHeight={1}>
+        {/* <MDBox display="flex" justifyContent="space-between" alignItems="center" lineHeight={1}>
           <MDTypography variant="h6">Light / Dark</MDTypography>
 
-          <Switch checked={darkMode} onChange={handleDarkMode} />
-        </MDBox>
-        <Divider />
+          <Switch checked={true} onChange={handleDarkMode} />
+        </MDBox> */}
+        {/* <Divider /> */}
         {/* <MDBox mt={3} mb={2}>
           <MDButton
             component={Link}

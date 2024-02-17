@@ -3,6 +3,12 @@ import {
   LOGIN_PENDING, LOGIN_FULFILLED, LOGIN_REJECTED,
   GET_ALL_USERS_PENDING, GET_ALL_USERS_FULFILLED, GET_ALL_USERS_REJECTED,
   DISABLE_USER_PENDING, DISABLE_USER_FULFILLED, DISABLE_USER_REJECTED,
+  GET_LINE_ONE_DATA_PENDING,
+  GET_LINE_ONE_DATA_FULFILLED,
+  GET_LINE_ONE_DATA_REJECTED,
+  GET_BAR_GRAPH_DATA_PENDING,
+  GET_BAR_GRAPH_DATA_FULFILLED,
+  GET_BAR_GRAPH_DATA_REJECTED,
   ENABLE_USER_PENDING, ENABLE_USER_FULFILLED, ENABLE_USER_REJECTED, CLEAR_PLANS_REJECTED, CLEAR_PLANS_FULFILLED, CLEAR_PLANS_PENDING, LIST_PLANS_PENDING, LIST_PLANS_FULFILLED, LIST_PLANS_REJECTED, ADD_PLAN_PENDING, ADD_PLAN_FULFILLED, ADD_PLAN_REJECTED, FETCH_PLAN_INFO_PENDING, FETCH_PLAN_INFO_FULFILLED, FETCH_PLAN_INFO_REJECTED, DELETE_PLAN_PENDING, DELETE_PLAN_FULFILLED, DELETE_PLAN_REJECTED, MODIFY_PLAN_PENDING, MODIFY_PLAN_FULFILLED, MODIFY_PLAN_REJECTED, ENABLE_USER_SUBSCRIPTION_PENDING, ENABLE_USER_SUBSCRIPTION_FULFILLED, ENABLE_USER_SUBSCRIPTION_REJECTED, VALIDATE_TOKEN_FULFILLED, VALIDATE_TOKEN_PENDING, GET_REFRESH_TOKEN_REJECTED, VALIDATE_TOKEN_REJECTED, GET_REFRESH_TOKEN_FULFILLED, GET_REFRESH_TOKEN_PENDING, SIGNUP_PENDING, SIGNUP_FULFILLED, SIGNUP_REJECTED, GET_ALL_HOTELS_PENDING, GET_ALL_HOTELS_FULFILLED, GET_ALL_HOTELS_REJECTED, GET_ALL_REVIEWS_REJECTED, GET_ALL_REVIEWS_FULFILLED, GET_ALL_REVIEWS_PENDING, GET_ALL_PLANS_PENDING, GET_ALL_PLANS_FULFILLED, GET_ALL_PLANS_REJECTED, GET_USER_HOTEL_INFO_PENDING, GET_USER_HOTEL_INFO_FULFILLED, GET_USER_HOTEL_INFO_REJECTED, DISABLE_USER_SUBS_PENDING, DISABLE_USER_SUBS_FULFILLED, DISABLE_USER_SUBS_REJECTED, EDIT_PLAN_DETAILS_PENDING, EDIT_PLAN_DETAILS_FULFILLED, EDIT_PLAN_DETAILS_REJECTED
   // Import other action types
 } from './actionTypes';
@@ -14,6 +20,7 @@ const initialState = {
   user: null,
   users: [],
   isLoading: false,
+  lineChartOneData: [],
   error: null,
   isUserLoggedIn: false,
   activeUserDetails: {},
@@ -25,11 +32,59 @@ const initialState = {
   isFullPageLoading: false,
   selectedUserHotelData: {},
   allPlansData: [],
+  barGraphData: [],
   // other state properties
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+
+
+    case GET_BAR_GRAPH_DATA_PENDING: {
+      return {
+        ...state,
+        isFullPageLoading: true,
+      };
+    };
+    case GET_BAR_GRAPH_DATA_FULFILLED: {
+      const data = action.payload;
+      return {
+        ...state,
+        isFullPageLoading: false,
+        barGraphData: data,
+      };
+    };
+    case GET_BAR_GRAPH_DATA_REJECTED: {
+      return {
+        ...state,
+        isFullPageLoading: false,
+      };
+    };
+
+
+    case GET_LINE_ONE_DATA_PENDING: {
+      return {
+        ...state,
+        isFullPageLoading: false,
+      };
+    };
+
+    case GET_LINE_ONE_DATA_FULFILLED: {
+      const data = action.payload;
+      // console.log(data)
+      return {
+        ...state,
+        isFullPageLoading: false,
+        lineChartOneData: data,
+      };
+    };
+
+    case GET_LINE_ONE_DATA_REJECTED: {
+      return {
+        ...state,
+        isFullPageLoading: false,
+      };
+    };
 
     case GET_ALL_HOTELS_PENDING: {
       return {
@@ -381,7 +436,7 @@ const userReducer = (state = initialState, action) => {
       const { data, planId } = action.payload;
       const { updatedSubscription } = data;
       const updatedPlans = state.allPlansData.map(plan => {
-        if(plan.priceId === planId) {
+        if (plan.priceId === planId) {
           return updatedSubscription;
         }
         return plan;
