@@ -45,6 +45,8 @@ import Projects from "views/dashboard/components/Projects";
 import { Icon, Switch } from "@mui/material";
 import MDProgress from "components/MDProgress";
 import { Google } from "@mui/icons-material";
+// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import accountIcon from '../../Images/account.png';
 
 const UserList = (props) => {
   const { columns, rows } = authorsTableData();
@@ -98,7 +100,7 @@ const UserList = (props) => {
 
   const Author = ({ image, name, description }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
-      <MDAvatar src={image} name={name} size="sm" />
+      <MDAvatar src={accountIcon} name={name} size="sm" />
       <MDBox ml={2} lineHeight={1}>
         <MDTypography display="block" className="platformNameInList" variant="button" fontWeight="medium">
           {name}

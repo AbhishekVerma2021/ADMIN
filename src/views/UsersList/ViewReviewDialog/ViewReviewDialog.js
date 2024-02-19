@@ -1,5 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import React from 'react';
+import './ViewReviewDialog.css'
+
 
 const ViewReviewDialog = (props) => {
   const {
@@ -9,7 +11,7 @@ const ViewReviewDialog = (props) => {
   } = props;
   // const { name, location } = data;
   return (<>
-    <Dialog open={open} onClose={() => handleOpen(false)}>
+    <Dialog className='viewUserDialog' open={open} onClose={() => handleOpen(false)}>
       <DialogTitle>
         Registerd business Info
       </DialogTitle>
@@ -22,7 +24,7 @@ const ViewReviewDialog = (props) => {
         </div>
       </DialogContent>
       <DialogActions>
-        <Button variant='container' onClick={() => handleOpen(false)}>Close</Button>
+        <Button variant='container' sx={{ color: 'white !important' }} onClick={() => handleOpen(false)}>Close</Button>
       </DialogActions>
     </Dialog>
   </>);

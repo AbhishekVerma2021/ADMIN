@@ -45,6 +45,7 @@ import Projects from "views/dashboard/components/Projects";
 import { Icon } from "@mui/material";
 import MDProgress from "components/MDProgress";
 import { Google } from "@mui/icons-material";
+import businessIcon from '../../Images/business.png';
 
 const ReviewList = (props) => {
   const { columns, rows } = authorsTableData();
@@ -60,7 +61,7 @@ const ReviewList = (props) => {
 allHotelsData,
   } = props;
 
-  const Author = ({ image, name, description }) => (
+  const Author1 = ({ image, name, description }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
       <MDBox ml={2} lineHeight={1}>
@@ -104,7 +105,7 @@ allHotelsData,
 
       // console.log(room)
       let singleData = {
-        author: <Author image={platformIcon} name={name} description={location} />,
+        author: <Author1 image={businessIcon} name={name} description={location} />,
         reviewCount: <Job title={reviews ? reviews.length : 0} description="Organization" />,
         function: <Job title={activeAI} description="Organization" />,
         status: (

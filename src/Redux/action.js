@@ -123,7 +123,7 @@ export const enableUser = (uid) => {
   return (dispatch) => {
     dispatch({ type: ENABLE_USER_PENDING });
     Axios.post('/admin/enableuser', { uid })
-      .then(response => dispatch({ type: ENABLE_USER_FULFILLED, payload: response.data }))
+      .then(response => dispatch({ type: ENABLE_USER_FULFILLED, payload: { data: response.data, _id: uid } }))
       .catch(error => dispatch({ type: ENABLE_USER_REJECTED, payload: error }));
   };
 };

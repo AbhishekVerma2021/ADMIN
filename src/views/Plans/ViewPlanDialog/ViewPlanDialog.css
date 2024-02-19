@@ -1,4 +1,5 @@
-.editDialogMasterContainer {
+.editDialogMasterContainer > div>div {
   /* width: 90vw !important; */
   /* border: 2px solid red; */
+  background-color: #1a2035;
 }

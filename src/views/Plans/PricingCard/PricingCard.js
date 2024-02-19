@@ -23,9 +23,9 @@ const PricingCard = (props) => {
   } = props;
   console.log(price);
   return (
-    <div className="pricing-card">
+    <div className="pricing-card" style={{ backgroundColor: '#202940', border: '2px solid #202940', color: 'white' }}>
       <div className="card-header">
-        <h2 className='carPlanName'>{planName}</h2>
+        <h2 className='carPlanName' style={{ color: priceColor }}>{planName}</h2>
         <div className='hotelCountForplan'>Trial days for this plan: {trialDays}</div>
         <p className="price" style={{ backgroundColor: priceColor }}>
           <span>

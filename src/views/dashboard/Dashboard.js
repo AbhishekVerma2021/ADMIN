@@ -131,8 +131,8 @@ const Dashboard = (props) => {
                 count={allUsersData ? allUsersData.length : 'NA'}
                 percentage={{
                   color: "success",
-                  amount: "+55%",
-                  label: "than lask week",
+                  // amount: "+55%",
+                  label: "just updated",
                 }}
               />
             </MDBox>
@@ -145,8 +145,8 @@ const Dashboard = (props) => {
                 count={activeUserCount}
                 percentage={{
                   color: "success",
-                  amount: "+3%",
-                  label: "than last month",
+                  // amount: "+3%",
+                  label: "just updated",
                 }}
               />
             </MDBox>
@@ -160,8 +160,8 @@ const Dashboard = (props) => {
                 count={allHotelsData ? allHotelsData.length : 0}
                 percentage={{
                   color: "success",
-                  amount: "+1%",
-                  label: "than yesterday",
+                  // amount: "+1%",
+                  label: "just updated",
                 }}
               />
             </MDBox>
@@ -175,7 +175,7 @@ const Dashboard = (props) => {
                 count={activeBusinessCount}
                 percentage={{
                   color: "success",
-                  amount: "",
+                  // amount: "",
                   label: "Just updated",
                 }}
               />

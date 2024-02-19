@@ -312,8 +312,17 @@ const userReducer = (state = initialState, action) => {
       };
     };
     case ENABLE_USER_FULFILLED: {
+      const { data, _id } = action.payload;
+      const { message } = data;
+      const updatedUsers = state.allUsersData.map((user) => {
+        if (user._id === _id) {
+          user.isActivated = true;
+        };
+        return user;
+      });
       return {
         ...state,
+        allUsersData: updatedUsers,
         isFullPageLoading: false,
       };
     };
