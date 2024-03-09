@@ -82,7 +82,7 @@ const ReviewList = (props) => {
   const dataForRows = (reviewsData) => {
     let allRowsData = [];
     // console.log(reviewsData)
-    reviewsData && reviewsData.length > 0 && reviewsData.map(review => {
+    reviewsData && reviewsData.length > 0 && [...reviewsData].map(review => {
       const { platform, starRating, creation_date, customer_feedback, _id, business_id } = review;
       const platformIcon = platform === 'google' ? maps : platform === 'instagram' ? instagram : platform === 'glassdoor' ? glassDoor : platform === 'twitter' ? twitter : facebook;
       const date = new Date(creation_date);

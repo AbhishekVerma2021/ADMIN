@@ -58,6 +58,8 @@ import UserList from './views/UsersList'
 import ProtectedRoute from 'components/ProtectedRoute';
 import HotelsList from 'views/HotelsList';
 import ApartmentIcon from '@mui/icons-material/Apartment';
+import BuisnessCalls from 'views/BuisnessCalls';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 const routes = [
   {
     type: "collapse",
@@ -98,6 +100,14 @@ const routes = [
     icon: <ApartmentIcon />,
     route: "/allBusinesses",
     component: <ProtectedRoute Component={HotelsList} componentPath="/allBusinesses" />,
+  },
+  {
+    type: "collapse",
+    name: "Business Calls",
+    key: "businessCalls",
+    icon: <ContactPhoneIcon />,
+    route: "/buisnessCalls",
+    component: <ProtectedRoute Component={BuisnessCalls} componentPath="/buisnessCalls" />,
   },
   // {
   //   type: "collapse",

@@ -9,7 +9,7 @@ import {
   GET_BAR_GRAPH_DATA_PENDING,
   GET_BAR_GRAPH_DATA_FULFILLED,
   GET_BAR_GRAPH_DATA_REJECTED,
-  ENABLE_USER_PENDING, ENABLE_USER_FULFILLED, ENABLE_USER_REJECTED, CLEAR_PLANS_REJECTED, CLEAR_PLANS_FULFILLED, CLEAR_PLANS_PENDING, LIST_PLANS_PENDING, LIST_PLANS_FULFILLED, LIST_PLANS_REJECTED, ADD_PLAN_PENDING, ADD_PLAN_FULFILLED, ADD_PLAN_REJECTED, FETCH_PLAN_INFO_PENDING, FETCH_PLAN_INFO_FULFILLED, FETCH_PLAN_INFO_REJECTED, DELETE_PLAN_PENDING, DELETE_PLAN_FULFILLED, DELETE_PLAN_REJECTED, MODIFY_PLAN_PENDING, MODIFY_PLAN_FULFILLED, MODIFY_PLAN_REJECTED, ENABLE_USER_SUBSCRIPTION_PENDING, ENABLE_USER_SUBSCRIPTION_FULFILLED, ENABLE_USER_SUBSCRIPTION_REJECTED, VALIDATE_TOKEN_FULFILLED, VALIDATE_TOKEN_PENDING, GET_REFRESH_TOKEN_REJECTED, VALIDATE_TOKEN_REJECTED, GET_REFRESH_TOKEN_FULFILLED, GET_REFRESH_TOKEN_PENDING, SIGNUP_PENDING, SIGNUP_FULFILLED, SIGNUP_REJECTED, GET_ALL_HOTELS_PENDING, GET_ALL_HOTELS_FULFILLED, GET_ALL_HOTELS_REJECTED, GET_ALL_REVIEWS_REJECTED, GET_ALL_REVIEWS_FULFILLED, GET_ALL_REVIEWS_PENDING, GET_ALL_PLANS_PENDING, GET_ALL_PLANS_FULFILLED, GET_ALL_PLANS_REJECTED, GET_USER_HOTEL_INFO_PENDING, GET_USER_HOTEL_INFO_FULFILLED, GET_USER_HOTEL_INFO_REJECTED, DISABLE_USER_SUBS_PENDING, DISABLE_USER_SUBS_FULFILLED, DISABLE_USER_SUBS_REJECTED, EDIT_PLAN_DETAILS_PENDING, EDIT_PLAN_DETAILS_FULFILLED, EDIT_PLAN_DETAILS_REJECTED
+  ENABLE_USER_PENDING, ENABLE_USER_FULFILLED, ENABLE_USER_REJECTED, CLEAR_PLANS_REJECTED, CLEAR_PLANS_FULFILLED, CLEAR_PLANS_PENDING, LIST_PLANS_PENDING, LIST_PLANS_FULFILLED, LIST_PLANS_REJECTED, ADD_PLAN_PENDING, ADD_PLAN_FULFILLED, ADD_PLAN_REJECTED, FETCH_PLAN_INFO_PENDING, FETCH_PLAN_INFO_FULFILLED, FETCH_PLAN_INFO_REJECTED, DELETE_PLAN_PENDING, DELETE_PLAN_FULFILLED, DELETE_PLAN_REJECTED, MODIFY_PLAN_PENDING, MODIFY_PLAN_FULFILLED, MODIFY_PLAN_REJECTED, ENABLE_USER_SUBSCRIPTION_PENDING, ENABLE_USER_SUBSCRIPTION_FULFILLED, ENABLE_USER_SUBSCRIPTION_REJECTED, VALIDATE_TOKEN_FULFILLED, VALIDATE_TOKEN_PENDING, GET_REFRESH_TOKEN_REJECTED, VALIDATE_TOKEN_REJECTED, GET_REFRESH_TOKEN_FULFILLED, GET_REFRESH_TOKEN_PENDING, SIGNUP_PENDING, SIGNUP_FULFILLED, SIGNUP_REJECTED, GET_ALL_HOTELS_PENDING, GET_ALL_HOTELS_FULFILLED, GET_ALL_HOTELS_REJECTED, GET_ALL_REVIEWS_REJECTED, GET_ALL_REVIEWS_FULFILLED, GET_ALL_REVIEWS_PENDING, GET_ALL_PLANS_PENDING, GET_ALL_PLANS_FULFILLED, GET_ALL_PLANS_REJECTED, GET_USER_HOTEL_INFO_PENDING, GET_USER_HOTEL_INFO_FULFILLED, GET_USER_HOTEL_INFO_REJECTED, DISABLE_USER_SUBS_PENDING, DISABLE_USER_SUBS_FULFILLED, DISABLE_USER_SUBS_REJECTED, EDIT_PLAN_DETAILS_PENDING, EDIT_PLAN_DETAILS_FULFILLED, EDIT_PLAN_DETAILS_REJECTED, GET_BUISNESS_CALLS_FULFILLED, GET_BUISNESS_CALLS_PENDING, GET_BUISNESS_CALLS_REJECTED
   // Import other action types
 } from './actionTypes';
 
@@ -33,12 +33,35 @@ const initialState = {
   selectedUserHotelData: {},
   allPlansData: [],
   barGraphData: [],
+  allBuisnessCallsData: [],
   // other state properties
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
 
+
+    case GET_BUISNESS_CALLS_PENDING: {
+      return {
+        ...state,
+        isFullPageLoading: true,
+      };
+    };
+    case GET_BUISNESS_CALLS_FULFILLED: {
+      let data = action.payload;
+      // console.log(data);
+      return {
+        ...state,
+        isFullPageLoading: false,
+        allBuisnessCallsData: data,
+      }
+    }
+    case GET_BUISNESS_CALLS_REJECTED: {
+      return {
+        ...state,
+        isFullPageLoading: false,
+      }
+    }
 
     case GET_BAR_GRAPH_DATA_PENDING: {
       return {
@@ -186,11 +209,15 @@ const userReducer = (state = initialState, action) => {
 
       const { user, resultMessage, accessToken, refreshToken } = action.payload;
       const { password, ...activeUserDetails } = user;
+      const { type } = user; 
       if (accessToken) {
         localStorage.setItem('TOKEN', accessToken);
       }
       if (refreshToken) {
         localStorage.setItem('REFRESH_TOKEN', refreshToken);
+      }
+      if(type !== 'admin') {
+        toast.error('You are not an admin!!');
       }
       // toast.success(resultMessage)
       return {
@@ -198,7 +225,7 @@ const userReducer = (state = initialState, action) => {
         activeUserDetails,
         ussToken: accessToken,
         refreshToken,
-        isUserLoggedIn: true,
+        isUserLoggedIn: type === 'admin' ? true : false,
         isFullPageLoading: false,
       }
     };
@@ -218,10 +245,14 @@ const userReducer = (state = initialState, action) => {
     case VALIDATE_TOKEN_FULFILLED: {
       const user = action.payload;
       // console.log(user);
+      const { type } = user;
+      if(type !== 'admin') {
+        toast.error('You are not an admin!!');
+      }
       return {
         ...state,
         activeUserDetails: user,
-        isUserLoggedIn: true,
+        isUserLoggedIn: type === 'admin' ? true : false,
       }
     }
     case VALIDATE_TOKEN_REJECTED: {

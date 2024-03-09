@@ -85,7 +85,7 @@ allHotelsData,
   const dataForRows = () => {
     let allRowsData = [];
     // console.log(reviewsData)
-    allHotelsData && allHotelsData.length > 0 && allHotelsData.map(hotel => {
+    allHotelsData && allHotelsData.length > 0 && [...allHotelsData].reverse().map(hotel => {
       const { name, location, activeAI,reviews,  room, active_subscription, isPremium, isActive, activePlatforms, user_id } = hotel;
       
       const platformIcon = '' === 'google' ? maps : '' === 'instagram' ? instagram : '' === 'glassdoor' ? glassDoor : '' === 'twitter' ? twitter : facebook;

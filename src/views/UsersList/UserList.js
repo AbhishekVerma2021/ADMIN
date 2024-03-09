@@ -167,7 +167,7 @@ const UserList = (props) => {
     let allRowsData = [];
     // const [hook, setHook] = useState();
     // console.log(reviewsData)
-    allUsersData && allUsersData.length > 0 && allUsersData.map(user => {
+    allUsersData && allUsersData.length > 0 && [...allUsersData].reverse().map(user => {
       const { name, email, username, isActivated, createdAt, business_id, _id, isPremium } = user;
       const hotelData = business_id;
       const platformIcon = '' === 'google' ? maps : '' === 'instagram' ? instagram : '' === 'glassdoor' ? glassDoor : '' === 'twitter' ? twitter : facebook;
