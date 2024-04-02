@@ -29,7 +29,7 @@ const ViewReviewDialog = (props) => {
   // console.log(hotel);
   // const copyToClipboard = () => {
   const copyToClipboard = async (text) => {
-    let textToCopy = `https://remi-back.onrender.com/feedback?business_id=${business_id}`;
+    let textToCopy = `https://rime-323336461dab.herokuapp.com/feedback?business_id=${business_id}`;
     try {
       await navigator.clipboard.writeText(textToCopy);
       toast.info("Url copied to clipboard!");

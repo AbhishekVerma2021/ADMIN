@@ -1,7 +1,7 @@
 // axiosInstance.js
 import axios from 'axios';
 
-const baseURL = 'https://remi-back.onrender.com/api'; // replace with your API base URL
+const baseURL = 'https://rime-323336461dab.herokuapp.com/api'; // replace with your API base URL
 
 const Axios = axios.create({
   baseURL,

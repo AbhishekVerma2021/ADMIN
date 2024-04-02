@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 // @mui material components
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
+import rimeLogo from '../../Images/rimeLogo.png';
 import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
 import MDBox from "components/MDBox";
@@ -160,15 +161,15 @@ function Sidenav({ color, brand, brandName, isUserLoggedIn, routes, ...rest }) {
             </MDTypography>
           </MDBox>
           <MDBox component={NavLink} to="/" display="flex" alignItems="center">
-            {brand && <MDBox component="img" src={brand} alt="Brand" width="2rem" />}
-            <MDBox
+          {rimeLogo && <MDBox component="img" src={rimeLogo} alt="Brand" width="7rem" />}
+            {/* <MDBox
               width={!brandName && "100%"}
               sx={(theme) => sidenavLogoLabel(theme, { miniSidenav })}
             >
               <MDTypography component="h6" variant="button" fontWeight="medium" color={textColor}>
                 {brandName}
               </MDTypography>
-            </MDBox>
+            </MDBox> */}
           </MDBox>
         </MDBox>
         <Divider
